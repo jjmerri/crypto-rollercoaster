@@ -1,0 +1,71 @@
+.select-css {
+	font-size: 13px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: gray;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	width: 9rem;
+	box-sizing: border-box;
+	border: 1px solid #77777d;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-image: url('../public/arrow.svg'),
+	  linear-gradient(to bottom, #00001c 0%,#303033 100%);
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .95em auto, 100%;
+}
+.select-css::-ms-expand {
+	display: none;
+}
+.select-css:hover {
+	border-color: #888;
+}
+.select-css:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0px0 0 3px -moz-mac-focusring;
+	color: #77777d;
+	outline: none;
+}
+.select-css option {
+	font-weight:normal;
+}
+
+.rc-footer-container {
+	padding: 20px 0 0 0;
+}
+
+.override-rc-footer-column h2 {
+	color:#808080;
+	font-weight: bold;
+}
+
+.override-rc-footer-column a {
+	color:#808080;
+}
+.override-rc-footer-column {
+	margin-bottom: 20px;
+}
+
+.override-rc-footer {
+	background-image: linear-gradient(to bottom, #00001c 0%,#12122f 100%);
+    background-position: right .7em top 50%, 0 0;
+    background-size: .95em auto, 100%;
+}
+
+.full-screen-background-image {
+	z-index: -999;
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+  }

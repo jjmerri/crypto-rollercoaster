@@ -1,0 +1,24 @@
+{
+  "name": "crypto-rollercoaster",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3030",
+    "now:dev": "now dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "next": "9.3.4",
+    "rc-footer": "^0.6.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-ga": "^2.7.0",
+    "recharts": "^1.8.5",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.7"
+  }
+}
