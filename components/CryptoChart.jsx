@@ -61,13 +61,14 @@ const calculatePrecision = (histData) => {
   return { precision, numDigits };
 };
 
-const CryptoChart = ({ histData, updateData }) => {
+const CryptoChart = (props) => {
+  const { histData, updateData, initialFromCurrency, initialToCurrency, initialTimeUnits } = props;
   const [precision, setPrecision] = useState(4);
   const [numDigits, setNumDigits] = useState(5);
   const [toCurrencySymbol, setToCurrencySymbol] = useState('$');
-  const [toCurrency, setToCurrency] = useState('USD');
-  const [fromCurrency, setFromCurrency] = useState('BTC');
-  const [timeUnits, setTimeUnits] = useState(TimeUnits.HOURS);
+  const [fromCurrency, setFromCurrency] = useState(initialFromCurrency || 'BTC');
+  const [toCurrency, setToCurrency] = useState(initialToCurrency || 'USD');
+  const [timeUnits, setTimeUnits] = useState(initialTimeUnits || TimeUnits.HOURS);
   const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {

@@ -7,6 +7,8 @@ import { cryptoHistory } from '../services/apiService';
 import { getHistoricalData } from '../services/cryptoCompareService';
 import { TimeUnits } from '../consts/TimeUnits';
 import Footer from 'rc-footer';
+import { FromCurrencyCodes } from '../consts/FromCurrencyCodes';
+import { ToCurrencyCodes } from '../consts/ToCurrencyCodes';
 
 const Container = styled.div`
   padding-right: 15px;
@@ -59,16 +61,37 @@ const calculateRotation = (histData) => {
   return rotation * -1;
 };
 
-export async function getServerSideProps(context) {
-  const initialHistData = await getHistoricalData('BTC', 'USD', TimeUnits.HOURS);
+function getParameterCaseInsensitive(object, key) {
+  return object[Object.keys(object).find((k) => k.toLowerCase() === key.toLowerCase())];
+}
+
+export async function getServerSideProps({ query }) {
+  let from = 'BTC';
+  let to = 'USD';
+  let timeUnits = TimeUnits.HOURS;
+
+  let fromQueryParam = getParameterCaseInsensitive(query, 'from');
+  let toQueryParam = getParameterCaseInsensitive(query, 'to');
+  let timeUnitsQueryParam = getParameterCaseInsensitive(query, 'timeUnits');
+
+  if (fromQueryParam && FromCurrencyCodes[fromQueryParam.toUpperCase()]) {
+    from = fromQueryParam.toUpperCase();
+  }
+  if (toQueryParam && ToCurrencyCodes[toQueryParam.toUpperCase()]) {
+    to = toQueryParam.toUpperCase();
+  }
+  if (timeUnitsQueryParam && TimeUnits[timeUnitsQueryParam.toUpperCase()]) {
+    timeUnits = timeUnitsQueryParam.toUpperCase();
+  }
+  const initialHistData = await getHistoricalData(from, to, timeUnits);
   return {
-    props: { initialHistData },
+    props: { initialHistData, initialTo: to, initialFrom: from, initialTimeUnits: timeUnits },
   };
 }
 
-const Home = ({ initialHistData }) => {
+const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => {
   const [histData, setHistData] = useState(initialHistData);
-  const [rollercoasterImage, setRollercoasterImage] = useState('/btc-rollercoaster.gif');
+  const [rollercoasterImage, setRollercoasterImage] = useState(`/${initialFrom.toLowerCase()}-rollercoaster.gif`);
 
   useEffect(() => {
     document.body.style.margin = '0';
@@ -101,7 +124,13 @@ const Home = ({ initialHistData }) => {
             />
           </ImageContainer>
           <ChartContainer>
-            <CryptoChart histData={histData} updateData={updateData} />
+            <CryptoChart
+              histData={histData}
+              updateData={updateData}
+              initialFromCurrency={initialFrom}
+              initialToCurrency={initialTo}
+              initialTimeUnits={initialTimeUnits}
+            />
           </ChartContainer>
         </Container>
         <Footer
