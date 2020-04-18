@@ -6,8 +6,6 @@ import ReactGA from 'react-ga';
 import { cryptoHistory } from '../services/apiService';
 import { getHistoricalData } from '../services/cryptoCompareService';
 import { TimeUnits } from '../consts/TimeUnits';
-import { ToCurrencyCodes } from '../consts/ToCurrencyCodes';
-import { FromCurrencyCodes } from '../consts/FromCurrencyCodes';
 import Footer from 'rc-footer';
 
 const Container = styled.div`
@@ -75,7 +73,7 @@ const Home = ({ initialHistData }) => {
   useEffect(() => {
     document.body.style.margin = '0';
 
-    ReactGA.initialize('UA-163121450-1');
+    ReactGA.initialize('UA-163807112-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
