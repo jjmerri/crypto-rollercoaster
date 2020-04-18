@@ -130,7 +130,7 @@ const CryptoChart = (props) => {
           className='select-css'
           style={{ marginLeft: '2rem' }}>
           <option value={TimeUnits.MINUTES}>Mins</option>
-          <option value={TimeUnits.HOURS}>Hours</option>
+          <option value={TimeUnits.HOURS}>Hrs</option>
           <option value={TimeUnits.DAYS}>Days</option>
         </select>
       </ChartControlsContainer>
