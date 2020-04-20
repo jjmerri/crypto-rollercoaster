@@ -1,22 +1,14 @@
 import { FromCurrencyCodes } from './FromCurrencyCodes';
 
 export const ToCurrencyCodes = {
-  // USD: 'US Dollar',
-  // AUD: 'Australian Dollar',
-  // CAD: 'Canadian Dollar',
-  // EUR: 'Euro',
-  // GBP: 'Pound Sterling',
-  // ['---']: '---',
-  // BTC: 'Bitcoin',
-  // ETH: 'Ethereum',
-  USD: 'USD',
-  AUD: 'AUD',
-  CAD: 'CAD',
-  EUR: 'EUR',
-  GBP: 'GBP',
-  ['---']: '---',
-  BTC: 'BTC',
-  ETH: 'ETH',
+  USD: { code: 'USD', shortName: 'USD', longName: 'US Dollar' },
+  AUD: { code: 'AUD', shortName: 'AUD', longName: 'Australian Dollar' },
+  CAD: { code: 'CAD', shortName: 'CAD', longName: 'Canadian Dollar' },
+  EUR: { code: 'EUR', shortName: 'EUR', longName: 'Euro' },
+  GBP: { code: 'GBP', shortName: 'GBP', longName: 'Pound Sterling' },
+  ['---']: { shortName: '---', longName: '---' },
+  BTC: { code: 'BTC', shortName: 'BTC', longName: 'Bitcoin' },
+  ETH: { code: 'ETH', shortName: 'ETH', longName: 'Ethereum' },
 };
 
 //export const ToCurrencyCodes = { ...currencyCodes, ['---']: '---', ...FromCurrencyCodes };

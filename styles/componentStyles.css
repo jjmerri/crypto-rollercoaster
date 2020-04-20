@@ -1,11 +1,11 @@
-.select-css {
+.chart-options {
 	font-size: 13px;
 	font-family: sans-serif;
 	font-weight: 700;
 	color: gray;
 	line-height: 1.3;
 	padding: .6em 1.4em .5em .8em;
-	width: 4rem;
+	width: 3.67rem;
 	box-sizing: border-box;
 	border: 1px solid #77777d;
 	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
@@ -20,21 +20,27 @@
 	background-position: right .7em top 50%, 0 0;
 	background-size: .95em auto, 100%;
 }
-.select-css::-ms-expand {
+.chart-options::-ms-expand {
 	display: none;
 }
-.select-css:hover {
+.chart-options:hover {
 	border-color: #888;
 }
-.select-css:focus {
+.chart-options:focus {
 	border-color: #aaa;
 	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
 	box-shadow: 0 0px0 0 3px -moz-mac-focusring;
 	color: #77777d;
 	outline: none;
 }
-.select-css option {
+.chart-options option {
 	font-weight:normal;
+}
+
+@media only screen and (min-width: 612px) {
+	[class="chart-options"] {
+		width: 8rem;
+	}
 }
 
 .rc-footer-container {

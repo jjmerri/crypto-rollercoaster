@@ -5,15 +5,15 @@ export const getHistoricalData = async (crypto, currency, timeUnits) => {
   let limit;
   let endpoint;
   switch (timeUnits) {
-    case TimeUnits.MINUTES:
+    case TimeUnits.MINUTES.code:
       limit = 15;
       endpoint = 'histominute';
       break;
-    case TimeUnits.HOURS:
+    case TimeUnits.HOURS.code:
       limit = 12;
       endpoint = 'histohour';
       break;
-    case TimeUnits.DAYS:
+    case TimeUnits.DAYS.code:
       limit = 15;
       endpoint = 'histoday';
       break;

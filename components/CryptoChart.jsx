@@ -4,24 +4,26 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { TimeUnits } from '../consts/TimeUnits';
 import { ToCurrencyCodes } from '../consts/ToCurrencyCodes';
 import { FromCurrencyCodes } from '../consts/FromCurrencyCodes';
+import useWindowSize from '../hooks/useWindowSize';
 
 const ChartControlsContainer = styled.div`
   padding-bottom: 2rem;
   text-align: left;
 `;
 
+const DESKTOP_BREAKPOINT = 612;
 const currencySymbols = { USD: '$', BTC: '₿', AUD: '$', CAD: '$', EUR: '€', GBP: '£', ETH: 'Ξ' };
 
 const getChartData = (histData, timeUnits) => {
   let formatTime;
   switch (timeUnits) {
-    case TimeUnits.MINUTES:
+    case TimeUnits.MINUTES.code:
       formatTime = (datetime) => datetime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
       break;
-    case TimeUnits.HOURS:
+    case TimeUnits.HOURS.code:
       formatTime = (datetime) => datetime.toLocaleString('en-US', { hour: 'numeric', hour12: true });
       break;
-    case TimeUnits.DAYS:
+    case TimeUnits.DAYS.code:
       formatTime = (datetime) => datetime.toLocaleString('en-US', { day: '2-digit', month: '2-digit' });
       break;
   }
@@ -63,13 +65,23 @@ const calculatePrecision = (histData) => {
 
 const CryptoChart = (props) => {
   const { histData, updateData, initialFromCurrency, initialToCurrency, initialTimeUnits } = props;
+  const [mobileView, setMobileView] = useState(true);
   const [precision, setPrecision] = useState(4);
   const [numDigits, setNumDigits] = useState(5);
   const [toCurrencySymbol, setToCurrencySymbol] = useState('$');
-  const [fromCurrency, setFromCurrency] = useState(initialFromCurrency || 'BTC');
-  const [toCurrency, setToCurrency] = useState(initialToCurrency || 'USD');
-  const [timeUnits, setTimeUnits] = useState(initialTimeUnits || TimeUnits.HOURS);
+  const [fromCurrency, setFromCurrency] = useState(initialFromCurrency || FromCurrencyCodes.BTC.code);
+  const [toCurrency, setToCurrency] = useState(initialToCurrency || ToCurrencyCodes.USD.code);
+  const [timeUnits, setTimeUnits] = useState(initialTimeUnits || TimeUnits.HOURS.code);
   const [initialLoad, setInitialLoad] = useState(true);
+  const windowSize = useWindowSize();
+
+  useEffect(() => {
+    if (windowSize && windowSize.width >= DESKTOP_BREAKPOINT) {
+      setMobileView(false);
+    } else {
+      setMobileView(true);
+    }
+  }, [windowSize]);
 
   useEffect(() => {
     const { precision, numDigits } = calculatePrecision(histData);
@@ -105,33 +117,35 @@ const CryptoChart = (props) => {
         <select
           onChange={handleFromCurrencyChange}
           value={fromCurrency}
-          className='select-css'
+          className='chart-options'
           style={{ marginLeft: `${4 + 0.5 * numDigits}rem` }}>
           {Object.keys(FromCurrencyCodes).map((code) => (
             <option disabled={code === toCurrency} key={code} value={code}>
-              {FromCurrencyCodes[code]}
+              {mobileView ? FromCurrencyCodes[code].shortName : FromCurrencyCodes[code].longName}
             </option>
           ))}
         </select>
         <select
           onChange={handleToCurrencyChange}
           value={toCurrency}
-          className='select-css'
+          className='chart-options'
           style={{ marginLeft: '2rem' }}>
           {Object.keys(ToCurrencyCodes).map((code) => (
             <option disabled={code === fromCurrency || code === '---'} key={code} value={code}>
-              {ToCurrencyCodes[code]}
+              {mobileView ? ToCurrencyCodes[code].shortName : ToCurrencyCodes[code].longName}
             </option>
           ))}
         </select>
         <select
           onChange={handleTimeUnitsChange}
           value={timeUnits}
-          className='select-css'
+          className='chart-options'
           style={{ marginLeft: '2rem' }}>
-          <option value={TimeUnits.MINUTES}>Mins</option>
-          <option value={TimeUnits.HOURS}>Hrs</option>
-          <option value={TimeUnits.DAYS}>Days</option>
+          {Object.keys(TimeUnits).map((code) => (
+            <option key={code} value={code}>
+              {mobileView ? TimeUnits[code].shortName : TimeUnits[code].longName}
+            </option>
+          ))}
         </select>
       </ChartControlsContainer>
       <ResponsiveContainer width='100%' height={300}>

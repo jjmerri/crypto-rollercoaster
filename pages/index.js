@@ -66,9 +66,9 @@ function getParameterCaseInsensitive(object, key) {
 }
 
 export async function getServerSideProps({ query }) {
-  let from = 'BTC';
-  let to = 'USD';
-  let timeUnits = TimeUnits.HOURS;
+  let from = FromCurrencyCodes.BTC.code;
+  let to = ToCurrencyCodes.USD.code;
+  let timeUnits = TimeUnits.HOURS.code;
 
   let fromQueryParam = getParameterCaseInsensitive(query, 'from');
   let toQueryParam = getParameterCaseInsensitive(query, 'to');
