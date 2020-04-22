@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import styled from 'styled-components';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label } from 'recharts';
 import { TimeUnits } from '../consts/TimeUnits';
@@ -111,6 +111,13 @@ const CryptoChart = (props) => {
     setTimeUnits(e.target.value);
   };
 
+  const chartDomain = useMemo(
+    () => [(dataMin) => (dataMin * 0.95).toFixed(precision), (dataMax) => (dataMax * 1.05).toFixed(precision)],
+    [precision],
+  );
+
+  const tooltipFormatter = useCallback((value) => [`${toCurrencySymbol}${value}`, ''], [toCurrencySymbol]);
+
   return (
     <>
       <ChartControlsContainer>
@@ -163,10 +170,7 @@ const CryptoChart = (props) => {
             label={<Label value={`LAST ${histData.Data.Data.length - 1} ${timeUnits}`} position='bottom' fill='gray' />}
           />
           <YAxis
-            domain={[
-              (dataMin) => (dataMin * 0.95).toFixed(precision),
-              (dataMax) => (dataMax * 1.05).toFixed(precision),
-            ]}
+            domain={chartDomain}
             tickFormatter={(tick) => `${toCurrencySymbol}${tick.toFixed(precision)}`}
             label={
               <Label
@@ -178,7 +182,7 @@ const CryptoChart = (props) => {
               />
             }
           />
-          <Tooltip formatter={(value) => [`${toCurrencySymbol}${value}`, '']} separator={''} />
+          <Tooltip formatter={tooltipFormatter} separator={''} />
           <Line type='monotone' dataKey='price' />
         </LineChart>
       </ResponsiveContainer>
