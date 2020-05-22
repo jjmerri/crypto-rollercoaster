@@ -110,7 +110,7 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
       <Head>
         <title>Crypto Rollercoaster</title>
         <link rel='icon' href='/favicon.png' />
-        <meta name='monetization' content='$reddit.xrptipbot.com/BoyAndHisBlob' />>
+        <meta name='monetization' content='$ilp.uphold.com/MLmWKGEgJR82' />
       </Head>
 
       <main>
