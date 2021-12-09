@@ -9,6 +9,7 @@ import { TimeUnits } from '../consts/TimeUnits';
 import Footer from 'rc-footer';
 import { FromCurrencyCodes } from '../consts/FromCurrencyCodes';
 import { ToCurrencyCodes } from '../consts/ToCurrencyCodes';
+import Image from 'next/image';
 
 const Container = styled.div`
   padding-right: 15px;
@@ -114,7 +115,7 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
       </Head>
 
       <main>
-        <img alt='starry background image' src='background.jpg' className='full-screen-background-image' />
+        <Image alt='starry background image' src='background.jpg' className='full-screen-background-image' />
         <Container>
           <ImageContainer>
             <RotatedImage
@@ -186,7 +187,11 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
             },
           ]}
           bottom={
-            <a style={{ color: '#808080' }} href='https://github.com/jjmerri/crypto-rollercoaster' target='_blank'>
+            <a
+              style={{ color: '#808080' }}
+              href='https://github.com/jjmerri/crypto-rollercoaster'
+              target='_blank'
+              rel='noreferrer'>
               cryptorollercoaster.com source
             </a>
           }

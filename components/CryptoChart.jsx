@@ -99,7 +99,7 @@ const CryptoChart = (props) => {
     } else {
       setInitialLoad(false);
     }
-  }, [fromCurrency, toCurrency, timeUnits]);
+  }, [fromCurrency, toCurrency, timeUnits, initialLoad, updateData]);
 
   const handleFromCurrencyChange = async (e) => {
     setFromCurrency(e.target.value);
