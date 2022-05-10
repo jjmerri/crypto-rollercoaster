@@ -8,7 +8,6 @@ import useWindowSize from '../hooks/useWindowSize';
 
 const ChartControlsContainer = styled.div`
   padding-bottom: 2rem;
-  text-align: left;
 `;
 
 const DESKTOP_BREAKPOINT = 612;
@@ -125,7 +124,7 @@ const CryptoChart = (props) => {
           onChange={handleFromCurrencyChange}
           value={fromCurrency}
           className='chart-options'
-          style={{ marginLeft: `${4 + 0.5 * numDigits}rem` }}>
+          style={{ margin: `auto` }}>
           {Object.keys(FromCurrencyCodes).map((code) => (
             <option disabled={code === toCurrency} key={code} value={code}>
               {mobileView ? FromCurrencyCodes[code].shortName : FromCurrencyCodes[code].longName}

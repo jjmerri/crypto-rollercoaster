@@ -22,7 +22,6 @@ const ChartContainer = styled.div`
   padding-right: 15px;
   padding-left: 15px;
   padding-top: 2rem;
-  padding-bottom: 10rem;
   text-align: center;
 `;
 
@@ -115,9 +114,17 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
       </Head>
 
       <main>
-        <Image alt='starry background image' src='background.jpg' className='full-screen-background-image' />
+        <Image
+          alt='starry background image'
+          src='/background.jpg'
+          className='full-screen-background-image'
+          layout='fill'
+        />
         <Container>
-          <ImageContainer>
+          <ImageContainer
+            style={{
+              overflow: 'hidden',
+            }}>
             <RotatedImage
               src={rollercoasterImage}
               alt='crypto rollercoaster image'
