@@ -20,12 +20,15 @@
 	background-position: right .7em top 50%, 0 0;
 	background-size: .95em auto, 100%;
 }
+
 .chart-options::-ms-expand {
 	display: none;
 }
+
 .chart-options:hover {
 	border-color: #888;
 }
+
 .chart-options:focus {
 	border-color: #aaa;
 	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
@@ -33,6 +36,7 @@
 	color: #77777d;
 	outline: none;
 }
+
 .chart-options option {
 	font-weight:normal;
 }
@@ -74,4 +78,9 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-  }
+}
+
+.background-image-box > span {
+	z-index: -1000;
+}
+ 

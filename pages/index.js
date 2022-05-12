@@ -114,12 +114,14 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
       </Head>
 
       <main>
-        <Image
-          alt='starry background image'
-          src='/background.jpg'
-          className='full-screen-background-image'
-          layout='fill'
-        />
+        <div className='background-image-box'>
+          <Image
+            alt='starry background image'
+            src='/background.jpg'
+            className='full-screen-background-image'
+            layout='fill'
+          />
+        </div>
         <Container>
           <ImageContainer
             style={{
