@@ -9,7 +9,6 @@ import { TimeUnits } from '../consts/TimeUnits';
 import Footer from 'rc-footer';
 import { FromCurrencyCodes } from '../consts/FromCurrencyCodes';
 import { ToCurrencyCodes } from '../consts/ToCurrencyCodes';
-import Image from 'next/image';
 
 const PageContainer = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ const Container = styled.div`
   padding-left: 15px;
   padding-top: 2rem;
   text-align: center;
-  /* min-height: calc(100vh - 32px); */
+  min-height: calc(100vh - 32px);
 `;
 const ChartContainer = styled.div`
   padding-right: 15px;
@@ -31,12 +30,10 @@ const ChartContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  /* padding-right: 15px;
+  padding-right: 15px;
   padding-left: 15px;
   padding-top: 2rem;
   padding-bottom: 3rem;
-  text-align: center; */
-  padding: auto;
 `;
 
 const RotatedImage = styled.img`
@@ -120,14 +117,6 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
       </Head>
 
       <main>
-        <div className='background-image-box'>
-          <Image
-            alt='starry background image'
-            src='/background.jpg'
-            // className='full-screen-background-image'
-            layout='fill'
-          />
-        </div>
         <PageContainer>
           <Container>
             <ImageContainer
