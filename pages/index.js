@@ -11,26 +11,32 @@ import { FromCurrencyCodes } from '../consts/FromCurrencyCodes';
 import { ToCurrencyCodes } from '../consts/ToCurrencyCodes';
 import Image from 'next/image';
 
+const PageContainer = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 const Container = styled.div`
   padding-right: 15px;
   padding-left: 15px;
   padding-top: 2rem;
   text-align: center;
-  min-height: calc(100vh - 32px);
+  /* min-height: calc(100vh - 32px); */
 `;
 const ChartContainer = styled.div`
   padding-right: 15px;
   padding-left: 15px;
-  padding-top: 2rem;
   text-align: center;
 `;
 
 const ImageContainer = styled.div`
-  padding-right: 15px;
+  /* padding-right: 15px;
   padding-left: 15px;
   padding-top: 2rem;
   padding-bottom: 3rem;
-  text-align: center;
+  text-align: center; */
+  padding: auto;
 `;
 
 const RotatedImage = styled.img`
@@ -118,93 +124,95 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
           <Image
             alt='starry background image'
             src='/background.jpg'
-            className='full-screen-background-image'
+            // className='full-screen-background-image'
             layout='fill'
           />
         </div>
-        <Container>
-          <ImageContainer
-            style={{
-              overflow: 'hidden',
-            }}>
-            <RotatedImage
-              src={rollercoasterImage}
-              alt='crypto rollercoaster image'
-              rotation={calculateRotation(histData)}
-            />
-          </ImageContainer>
-          <ChartContainer>
-            <CryptoChart
-              histData={histData}
-              updateData={updateData}
-              initialFromCurrency={initialFrom}
-              initialToCurrency={initialTo}
-              initialTimeUnits={initialTimeUnits}
-            />
-          </ChartContainer>
-        </Container>
-        <Footer
-          className='override-rc-footer'
-          columns={[
-            {
-              className: 'override-rc-footer-column',
-              title: 'CONTACT',
-              items: [
-                {
-                  title: 'BlobWare42@gmail.com',
-                  url: 'mailto:BlobWare42@gmail.com',
-                  openExternal: true,
-                },
-                {
-                  title: 'PM BoyAndHisBlob on Reddit',
-                  url: 'https://www.reddit.com/message/compose/?to=BoyAndHisBlob',
-                  openExternal: true,
-                },
-              ],
-            },
-            {
-              className: 'override-rc-footer-column',
-              title: 'SUPPORT',
-              items: [
-                {
-                  title: 'Tip in crypto',
-                  url: 'https://blobware-tips.firebaseapp.com/',
-                  openExternal: true,
-                },
-                {
-                  title: 'Web Monetized with Coil',
-                  url: 'https://coil.com/explore',
-                  openExternal: true,
-                },
-              ],
-            },
-            {
-              className: 'override-rc-footer-column',
-              title: 'PROJECTS',
-              items: [
-                {
-                  title: 'GitHub',
-                  url: 'https://github.com/jjmerri',
-                  openExternal: true,
-                },
-                {
-                  title: 'Dropchat',
-                  url: 'https://chrome.google.com/webstore/detail/dropchat/eaejhpdjaoedfbbnajilifkhdngdgbno?hl=en-US',
-                  openExternal: true,
-                },
-              ],
-            },
-          ]}
-          bottom={
-            <a
-              style={{ color: '#808080' }}
-              href='https://github.com/jjmerri/crypto-rollercoaster'
-              target='_blank'
-              rel='noreferrer'>
-              cryptorollercoaster.com source
-            </a>
-          }
-        />
+        <PageContainer>
+          <Container>
+            <ImageContainer
+              style={{
+                overflow: 'hidden',
+              }}>
+              <RotatedImage
+                src={rollercoasterImage}
+                alt='crypto rollercoaster image'
+                rotation={calculateRotation(histData)}
+              />
+            </ImageContainer>
+            <ChartContainer>
+              <CryptoChart
+                histData={histData}
+                updateData={updateData}
+                initialFromCurrency={initialFrom}
+                initialToCurrency={initialTo}
+                initialTimeUnits={initialTimeUnits}
+              />
+            </ChartContainer>
+          </Container>
+          <Footer
+            className='override-rc-footer'
+            columns={[
+              {
+                className: 'override-rc-footer-column',
+                title: 'CONTACT',
+                items: [
+                  {
+                    title: 'BlobWare42@gmail.com',
+                    url: 'mailto:BlobWare42@gmail.com',
+                    openExternal: true,
+                  },
+                  {
+                    title: 'PM BoyAndHisBlob on Reddit',
+                    url: 'https://www.reddit.com/message/compose/?to=BoyAndHisBlob',
+                    openExternal: true,
+                  },
+                ],
+              },
+              {
+                className: 'override-rc-footer-column',
+                title: 'SUPPORT',
+                items: [
+                  {
+                    title: 'Tip in crypto',
+                    url: 'https://blobware-tips.firebaseapp.com/',
+                    openExternal: true,
+                  },
+                  {
+                    title: 'Web Monetized with Coil',
+                    url: 'https://coil.com/explore',
+                    openExternal: true,
+                  },
+                ],
+              },
+              {
+                className: 'override-rc-footer-column',
+                title: 'PROJECTS',
+                items: [
+                  {
+                    title: 'GitHub',
+                    url: 'https://github.com/jjmerri',
+                    openExternal: true,
+                  },
+                  {
+                    title: 'Dropchat',
+                    url: 'https://chrome.google.com/webstore/detail/dropchat/eaejhpdjaoedfbbnajilifkhdngdgbno?hl=en-US',
+                    openExternal: true,
+                  },
+                ],
+              },
+            ]}
+            bottom={
+              <a
+                style={{ color: '#808080' }}
+                href='https://github.com/jjmerri/crypto-rollercoaster'
+                target='_blank'
+                rel='noreferrer'>
+                cryptorollercoaster.com source
+              </a>
+            }
+          />
+        </PageContainer>
       </main>
     </>
   );
