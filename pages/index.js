@@ -113,7 +113,6 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
       <Head>
         <title>Crypto Rollercoaster</title>
         <link rel='icon' href='/favicon.png' />
-        <meta name='monetization' content='$ilp.uphold.com/MLmWKGEgJR82' />
       </Head>
 
       <main>
@@ -165,11 +164,6 @@ const Home = ({ initialHistData, initialTo, initialFrom, initialTimeUnits }) => 
                   {
                     title: 'Tip in crypto',
                     url: 'https://blobware-tips.firebaseapp.com/',
-                    openExternal: true,
-                  },
-                  {
-                    title: 'Web Monetized with Coil',
-                    url: 'https://coil.com/explore',
                     openExternal: true,
                   },
                 ],
